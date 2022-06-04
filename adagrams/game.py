@@ -31,10 +31,8 @@ LETTER_POOL = {
 }
 
 def draw_letters():
-    # i = 0
     ten_letters = []
     pool_of_letters = []
-    # letter_pool_copy = LETTER_POOL.copy()
     for letter, count in LETTER_POOL.items(): 
         pool_of_letters.extend([letter] * count)
     while len(ten_letters) < 10:
@@ -46,8 +44,14 @@ def draw_letters():
     return ten_letters
     
 def uses_available_letters(word, letter_bank):
-    pass
-
+    letter_count = 0
+    letter_copy = letter_bank[:]
+    for letter in word:
+        if letter.upper() in letter_copy:
+            letter_copy.remove(letter.upper())
+            letter_count += 1
+    return letter_count == len(word)
+    
 def score_word(word):
     pass
 
